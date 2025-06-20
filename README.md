@@ -6,7 +6,7 @@ A project demonstrating how to build conversational AI applications using LangGr
 
 ## Overview
 
-This project showcases LangGraph, a library for building stateful, multi-actor applications with LLMs. The tutorial includes two implementations:
+This project showcases LangGraph, a library for building stateful, multi-actor applications with LLMs. The project includes two implementations:
 
 1. **Simple Chatbot** - Basic single-node graph implementation
 2. **Advanced Chatbot** - Multi-node graph with message classification and routing
@@ -180,7 +180,7 @@ Feel free to submit issues, fork the repository, and create pull requests for an
 
 ## Support
 
-If you found this tutorial helpful, consider buying me a coffee:
+If you found this helpful, consider buying me a coffee:
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/asheint)
 
