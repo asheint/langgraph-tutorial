@@ -1,18 +1,27 @@
-# LangGraph Tutorial
+# Learn LangGraph
 
-A beginner-friendly tutorial project demonstrating how to build conversational AI applications using LangGraph and Anthropic's Claude AI model.
+⭐ **Star this repository if you find it helpful!**
+
+A project demonstrating how to build conversational AI applications using LangGraph and Anthropic's Claude AI model. This repository contains both simple and advanced examples to help you understand LangGraph's capabilities.
 
 ## Overview
 
-This project showcases the basics of LangGraph, a library for building stateful, multi-actor applications with LLMs. The tutorial implements a simple chatbot that uses Claude 3.5 Sonnet to respond to user messages through a graph-based workflow.
+This project showcases LangGraph, a library for building stateful, multi-actor applications with LLMs. The tutorial includes two implementations:
+
+1. **Simple Chatbot** - Basic single-node graph implementation
+2. **Advanced Chatbot** - Multi-node graph with message classification and routing
+
+Both examples use Claude 3.5 Sonnet to demonstrate different LangGraph patterns and workflows.
 
 ## Features
 
-- Simple chatbot implementation using LangGraph
-- Integration with Anthropic's Claude 3.5 Sonnet model
-- State management for conversation flow
-- Graph visualization capabilities
-- Environment variable configuration for API keys
+- **Simple Implementation**: Basic chatbot with single-node graph
+- **Advanced Implementation**: Multi-agent system with message classification
+- **Conditional Routing**: Dynamic routing based on message type (emotional vs logical)
+- **Specialized Agents**: Therapist agent for emotional support, logical agent for factual responses
+- **State Management**: Conversation flow management across multiple nodes
+- **Graph Visualization**: Optional visual representation of graph structure
+- **Environment Configuration**: Secure API key management
 
 ## Prerequisites
 
@@ -24,8 +33,8 @@ This project showcases the basics of LangGraph, a library for building stateful,
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/asheint/langgraph-tutorial.git
-cd langgraph-tutorial
+git clone https://github.com/asheint/learn-langgraph.git
+cd learn-langgraph
 ```
 
 2. Create a virtual environment:
@@ -53,38 +62,74 @@ ANTHROPIC_API_KEY=your_api_key_here
 
 ## Usage
 
-Run the chatbot:
+### Simple Chatbot
+
+Run the basic single-node chatbot:
 
 ```bash
-python main.py
+python simple.py
 ```
 
-Enter your message when prompted, and the chatbot will respond using Claude 3.5 Sonnet.
+This implementation demonstrates:
+
+- Basic state definition with message handling
+- Single-node graph structure
+- Simple message flow: START → chatbot → END
+
+### Advanced Chatbot
+
+Run the multi-agent chatbot with message classification:
+
+```bash
+python advanced.py
+```
+
+This implementation demonstrates:
+
+- Message classification using structured output
+- Conditional routing based on message type
+- Specialized agents (therapist vs logical)
+- Complex graph flow with multiple decision points
+
+Type `exit` to quit the advanced chatbot.
 
 ## Project Structure
 
 ```
-├── main.py              # Main chatbot implementation
-├── pyproject.toml       # Project configuration and dependencies
-├── .env                 # Environment variables (create this file)
-├── .python-version      # Python version specification
-└── README.md           # This file
+├── simple.py           # Basic single-node chatbot implementation
+├── advanced.py         # Multi-agent chatbot with classification
+├── pyproject.toml      # Project configuration and dependencies
+├── .env               # Environment variables (create this file)
+├── .python-version    # Python version specification
+└── README.md          # This file
 ```
 
 ## How It Works
 
-1. **State Definition**: The `State` class defines the conversation state using TypedDict with message handling
-2. **Graph Building**: A StateGraph is created with a single "chatbot" node
-3. **Node Function**: The `chatbot` function processes messages using the Claude model
-4. **Graph Execution**: Messages flow from START → chatbot → END
-5. **Response**: The latest AI response is displayed to the user
+### Simple Implementation (simple.py)
+
+1. **State Definition**: State class with message list using `add_messages`
+2. **Single Node**: `chatbot` function processes all messages
+3. **Linear Flow**: START → chatbot → END
+4. **Direct Response**: User input → Claude response
+
+### Advanced Implementation (advanced.py)
+
+1. **Enhanced State**: State class with message classification
+2. **Message Classification**: `classify_message` categorizes input as emotional or logical
+3. **Conditional Routing**: `router` directs to appropriate agent
+4. **Specialized Agents**:
+   - `therapist_agent`: Provides emotional support and empathy
+   - `logical_agent`: Delivers factual, logic-based responses
+5. **Complex Flow**: START → classifier → router → (therapist|logical) → END
 
 ## Key Components
 
-- **LangGraph**: Provides the graph-based workflow framework
-- **LangChain**: Handles the chat model initialization and message management
-- **Anthropic Claude**: The underlying AI model for generating responses
-- **State Management**: Maintains conversation context through the graph execution
+- **LangGraph**: Graph-based workflow framework for multi-step AI applications
+- **LangChain**: Chat model initialization and message management
+- **Anthropic Claude**: Underlying AI model for generating responses
+- **Pydantic**: Structured output for message classification
+- **State Management**: Conversation context preservation across nodes
 
 ## Dependencies
 
@@ -95,7 +140,39 @@ Enter your message when prompted, and the chatbot will respond using Claude 3.5 
 
 ## Graph Visualization
 
-The project includes optional graph visualization capabilities. When run in a Jupyter notebook, it can display a visual representation of the graph structure.
+Both implementations include optional graph visualization. When run in a Jupyter notebook, they can display visual representations of the graph structures using Mermaid diagrams.
+
+## Learning Path
+
+1. **Start with simple.py**: Understand basic LangGraph concepts
+2. **Progress to advanced.py**: Learn multi-node graphs and conditional routing
+3. **Experiment**: Modify the classification logic or add new agent types
+4. **Extend**: Add memory, tool usage, or more complex routing logic
+
+## Examples
+
+### Simple Chatbot Interaction
+
+```
+Enter a message: What is the capital of France?
+Paris is the capital of France.
+```
+
+### Advanced Chatbot Interactions
+
+**Logical Query:**
+
+```
+Message: What is the capital of France?
+Assistant: Paris is the capital of France. It is located in the north-central part of the country...
+```
+
+**Emotional Query:**
+
+```
+Message: I'm feeling really stressed about work lately
+Assistant: I hear that you're feeling stressed about work, and I want you to know that what you're experiencing is completely valid...
+```
 
 ## Contributing
 
@@ -119,4 +196,6 @@ This project is open source and available under the MIT License.
 
 ---
 
-**Repository**: [https://github.com/asheint/langgraph-tutorial](https://github.com/asheint/langgraph-tutorial)
+**Repository**: [https://github.com/asheint/learn-langgraph](https://github.com/asheint/learn-langgraph)
+
+⭐ **Star this repository if you find it helpful!**
